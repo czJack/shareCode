@@ -1,0 +1,38 @@
+/**
+ * 冒泡排序
+ *
+ * @params $arr 要排序的数组
+ * @params $sot 默认升序排序，false 降序排序
+ */
+    function bubble_sort($arr,$sot = true)
+    {
+        $len = count($arr);
+        for($i=0;$i<$len-1;$i++){
+            //用来判断是否发生交换，没有则可以结束排序
+            $flag = false;
+            for($j=0;$j<$len-$i-1;$j++){
+                if($sot){
+                    //升序排序
+                    if($arr[$j]>$arr[$j+1]){
+                        $mid = $arr[$j];
+                        $arr[$j] = $arr[$j+1];
+                        $arr[$j+1] = $mid;
+                        $flag = true;
+                    }
+                }else{
+                    //降序排序
+                    if($arr[$j]<$arr[$j+1]){
+                        $mid = $arr[$j];
+                        $arr[$j] = $arr[$j+1];
+                        $arr[$j+1] = $mid;
+                        $flag = true;
+                    }
+                }
+            }
+            if(!$flag){
+                //排序已完成
+                break;
+            }
+        }
+        return $arr;
+    }
